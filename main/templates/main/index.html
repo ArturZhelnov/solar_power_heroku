@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+{% block title %}SOLAR ENERGY{% endblock %}
+
+{% block decription %}This is a website about Solar Energy{% endblock %}
+{% block keywords %}sun, sun power, sun energy, free energy, alternative energy{% endblock %}
+
+{% block content %}
+
+	{% include 'main/includes/messages.html' %}
+
+	{% include 'main/includes/header.html' %}
+
+	{% include 'main/includes/service.html' %}
+
+	{% include 'main/includes/info.html' %}
+
+	{% include 'main/includes/blockquote.html' %}
+
+	{% include 'main/includes/clients.html' %}
+
+	{% include 'main/includes/steps.html' %}
+	
+	{% include 'main/includes/partners.html' %}
+
+	{% include 'main/includes/footer.html' %}
+
+{% endblock %}

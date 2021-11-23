@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="et" class="h-100">
+	<head>
+		<!-- Basic -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<!-- Mobile Metas -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		
+		<!-- Site Metas -->
+		<title>{% block title %}{%endblock %}</title>
+		<meta name="description" content="{% block description %}{% endblock %}">
+		<meta name="keywords" content="{% block keywords %}{% endblock %}">
+		<meta name="author" content="Artur Woodpecker">
+		<link rel="canonical" href="{{ request.path }}"/>
+		<link rel="home" href="{% url 'main:index' %}"/><!--rel index?-->
+		
+		<!-- Site Icons -->
+		<link rel="apple-touch-icon" sizes="180x180" href="{% static 'main/images/fav/apple-touch-icon.png' %}">
+		<link rel="icon" type="image/png" sizes="32x32" href="{% static 'main/images/fav/favicon-32x32.png' %}">
+		<link rel="icon" type="image/png" sizes="16x16" href="{% static 'main/images/fav/favicon-16x16.png' %}">
+		
+		<!-- Design fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+		
+		<!-- Bootstrap core CSS -->
+		<link href="{% static 'main/css/bootstrap.css' %}" rel="stylesheet">
+		
+		<!-- AOS CSS styles for this template -->
+		<link href="{% static 'main/css/aos.css' %}" rel="stylesheet">
+		
+		<!-- SLICK CSS styles for this template -->
+		<link href="{% static 'main/css/slick.css' %}" rel="stylesheet">
+		
+		<!-- Custom styles for this template -->
+		<link href="{% static 'main/css/style.css' %}" rel="stylesheet">
+		<!-- for extend CSS -->
+		{% block extend_header%}{%endblock%}
+	
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		  <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body class="d-flex flex-column h-100" id="body_start" data-aos-easing="ease-out-back" data-aos-duration="1000" data-aos-delay="0">
+
+		{% block content %}
+		{% endblock %}
+		
+		<!-- <div class=""></div> Core JavaScript ================================================== -->
+	
+		<script src="{% static 'main/js/jquery-3.6.0.min.js' %}"></script>
+		<script src="{% static 'main/js/aos.js' %}"></script>
+		<script src="{% static 'main/js/slick.min.js' %}"></script>
+		<script src="{% static 'main/js/bootstrap.min.js' %}"></script>
+		<script src="{% static 'main/js/main.js' %}"></script>
+	</body>
+</html>
