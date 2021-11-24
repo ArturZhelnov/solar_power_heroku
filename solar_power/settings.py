@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-v!4^3r$xwko^8kjgb_am4ihsr#-uaj88^)@j&$f@q#dw)!x-m#
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['solar-power.herokuapp.com/', '127.0.0.1']
+ALLOWED_HOSTS = ['solar-power.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
