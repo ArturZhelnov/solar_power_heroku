@@ -1,0 +1,1 @@
+web: gunicorn solar_power.wsgi --log-file -

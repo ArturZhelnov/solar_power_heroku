@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from .models import Contact#, Social_link
+#from .models import Contact, Social_link, Service, Service_img
+from .models import *
 from .forms import ContactForm
 # Create your views here.
 
@@ -30,6 +31,33 @@ def index(request):
     ###
     
     #social_profiles = Social_link.objects.all()
+    #social_profiles = Social_link.objects.filter(is_active=True).order_by('soc_name')[:4]
+    social_profiles = Social_link.objects.all().order_by('soc_name')[:4]
+    # SERVICIES
+    services = Service.objects.all().order_by('id')
+    service_imgs = Service_img.objects.all()[:1]
+    #service_imgs = Service_img.objects.latest('-date_added')
+    # STEPS
+    steps = Step.objects.all().order_by('id')[:5]
+    steps_imgs = Steps_img.objects.all()[:1]
+    # PARTNERS
+    partners = Partner.objects.filter(is_active=True)#.order_by('soc_name')[:4]
+    # FOOTER
+    footer_contacts = Footer_contact.objects.all()[:1]
+    blockquote = Blockquote.objects.all().order_by('-id')[:1]
+    # CLIENTS
+    clients = Client.objects.all()[:3]
+    client_items = Client_item.objects.filter(client_name=clients)
+    # INFO
+    info_tabs = Info_tab.objects.all()[:3]
+    #tab_contexts = Tab_context.objects.filter(tab_id_id=info_tabs)#.all().order_by('-id')
+    tab_contexts = Info_tab_context.objects.filter(tab_id_id=info_tabs)
+    '''
+<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.instagram.com/" target="_blank"><img class="" src="{% static 'main/images/social/instagram.svg' %}" alt="instagram"/></a></li>
+<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/twitter.svg' %}" alt="telegram"/></a></li>
+<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/linkedin.svg' %}" alt="whatsapp"/></a></li>
+<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="{% url 'main:index' %}" target="_blank"><img class="" src="{% static 'main/images/social/facebook.svg' %}" alt="facebook"/></a></li>
+'''
     
    
     '''
@@ -103,8 +131,13 @@ def index(request):
             
     
     context = {'forms': forms, }
-    #'social_profiles': social_profiles,
+    # 'social_profiles': social_profiles,
     '''
-    context = {'forms': forms, }
+    context = {'forms': forms, 'social_profiles': social_profiles,
+               'services': services, 'service_imgs': service_imgs,
+               'steps': steps, 'steps_imgs': steps_imgs, 'partners': partners,
+               'footer_contacts': footer_contacts, 'blockquote': blockquote, 'clients': clients,
+               'client_items': client_items, 'info_tabs': info_tabs,
+               'tab_contexts': tab_contexts}
 
     return render(request, 'main/index.html', context)

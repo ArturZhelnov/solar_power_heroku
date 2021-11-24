@@ -7,7 +7,6 @@
 				<h4 class="footer_title text-uppercase text-center mb-5 fw-bold">Võta ühendust</h4>
 				<form class="footer_form d-flex flex-column" method="POST" action="{% url 'main:index' %}">
 					{% csrf_token %}
-
 					<input class="footer_input mb-5" type="text" name="name" placeholder="Ees ja perekonnanimi" required />
 					<input class="footer_input mb-5" type="tel" name="phone" placeholder="Telefoninumber" required />
 					<button class="footer_form_btn batn mt-3 mt-md-2 text-decoration-none align-self-start" type="submit" >
@@ -28,11 +27,15 @@
 			<div class="col-12 col-md-6 footer_contacts mt-5 mt-md-0">
 				<h4 class="footer_title text-uppercase text-center mb-5 fw-bold">Kontaktid</h4>
 				<div class="w-75 mx-auto">
-					<p class="">Postiveski 25, 12199 Tallinn</p>
-					<p class="">Tel: +372 654 1234</p>
-					<p class="">Email: <a class="text-warning" href="mailto:info@solarpower.ee">info@solarpower.ee</a></p>
-					<p class="">Kõnedele vastame E-R 8.00-18.00</p>
-					<p class="">Registrikood: 12345678</p>
+					{% for fc in footer_contacts %}
+						<p class="">{{ fc.address }}</p>
+						<p class="">Tel: {{ fc.phone }}</p>
+						<p class="">Email: <a class="text-warning" href="mailto:{{ fc.email }}">{{ fc.email }}</a></p>
+						<p class="">{{ fc.working_hours }}</p>
+						<p class="">{{ fc.reg_code }}</p>
+					{% empty %}
+						<p>No Contacts Found. Please Wait!</p>
+					{% endfor %}
 				</div>
 			</div>
 		</div>
@@ -45,10 +48,11 @@
 			</div>
 			<div class="col-12 col-md-4 d-flex align-items-center justify-content-center"><!--about(tochka)profile_set(tochka)all-->
 				<ul class="header_social nav d-flex align-items-center justify-content-center align-content-center">
-					<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.instagram.com/" target="_blank"><img class="" src="{% static 'main/images/social/instagram.svg' %}" alt="instagram"/></a></li>
-					<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/twitter.svg' %}" alt="telegram"/></a></li>
-					<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/linkedin.svg' %}" alt="whatsapp"/></a></li>
-					<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="{% url 'main:index' %}" target="_blank"><img class="" src="{% static 'main/images/social/facebook.svg' %}" alt="facebook"/></a></li>
+					{% for s in social_profiles %}
+						<li class="social_item nav-item col-md-6 col-lg-3 text-center"><a class="social_link nav-link" href="{{ s.link }}" target="_blank"><img class="" src="{{ s.soc_img.url }}" alt="{{ s.soc_name }}"/></a></li>
+					{% empty %}
+						<li class="social_item nav-item col-md-6 col-lg-3 text-center">No Contacts Found. Please Wait!</li>
+					{% endfor %}
 				</ul>
 			</div>
 		</div>

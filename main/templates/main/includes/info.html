@@ -8,95 +8,36 @@
 				<!--tabs-->
 				<div class="info_tabs mb-4">
 					<div class="info_tabs_items d-flex justify-content-evenly mb-4">
-						<a class="info_tabs_item text-uppercase active" href="#tab1">müük</a>
-						<a class="info_tabs_item text-uppercase" href="#tab2">paigaldamine</a>
-						<a class="info_tabs_item text-uppercase" href="#tab3">hooldus</a>
+						{% for tab in info_tabs %}
+						<a class="info_tabs_item text-uppercase" href="#{{ tab.tab_id }}">{{ tab.name }}</a>
+						{% endfor %}
 					</div>
 					<div class="info_tabs_contentbox pt-4">
-						<div class="info_tabs_content active" id="tab1">
+						{% for taab in info_tabs %}
+						<div class="info_tabs_content" id="{{ taab.tab_id }}">
 							<div class="info_slider">
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider1.jpg' %}" alt="SliderImage"/>
+								{% for t in taab.info_tab_context_set.all %}
+									<div class="info_slider_item row">
+										<div class="col-12 col-lg-6 mb-3 mb-lg-0">
+											<img class="info_slider_img w-100" src="{{ t.tab_img.url }}" alt="{% if t.tab_img_name %}{{ t.tab_img_name }}{% else %}SliderImage{% endif %}"/>
+										</div>
+										<div class="col-12 col-lg-6">
+											<p class="info_slider_text">{{ t.tab_text }}</p>
+										</div>
 									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Klient soovib asendada krundil asuva 40 m pikkuse õhuliini maakaabliga. Hind kokku: 4500 €. Hinnale lisandub projektijuhtimise tasu. Kliendil tuleb täiendavalt välja ehitada elektrisüsteem uuest kilbist majani (kaabel kilbist majja).</p>
+									
+								{% empty %}
+									<div class="service_box">
+										<h4 class="box_title">No Slides Found in {{ taab.tab_id }}. Please Wait!</h4>
 									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider2.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Elektrivõrgu ümberpaigutamine territooriumi vabastamiseks. Keskpinge 400 m pikkuse õhuliini asendamine maakaabliga kinnistu piires. Hind kokku: 20 300 eurot. Hinnale lisandub projektijuhtimise tasu.</p>
-									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider3.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Liitumispunkti asukoha muutus. Kilbi ja arvesti majast välja viimine õues oleva postile. hind kokku: 1070 €. Hinnale lisandub projektijuhtimise tasu. Lisaks pead täiendavalt välja ehitama uue kilbi ja maja vahelise ühenduse (kaabel kilbist majja).</p>
-									</div>
-								</div>
+								{% endfor %}
 							</div>
 						</div>
-						<div class="info_tabs_content" id="tab2">
-							<div class="info_slider">
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider2.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Klient soovib asendada krundil asuva 40 m pikkuse õhuliini maakaabliga. Hind kokku: 4500 €. Hinnale lisandub projektijuhtimise tasu. Kliendil tuleb täiendavalt välja ehitada elektrisüsteem uuest kilbist majani (kaabel kilbist majja).</p>
-									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider1.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Elektrivõrgu ümberpaigutamine territooriumi vabastamiseks. Keskpinge 400 m pikkuse õhuliini asendamine maakaabliga kinnistu piires. Hind kokku: 20 300 eurot. Hinnale lisandub projektijuhtimise tasu.</p>
-									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider3.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Liitumispunkti asukoha muutus. Kilbi ja arvesti majast välja viimine õues oleva postile. hind kokku: 1070 €. Hinnale lisandub projektijuhtimise tasu. Lisaks pead täiendavalt välja ehitama uue kilbi ja maja vahelise ühenduse (kaabel kilbist majja).</p>
-									</div>
-								</div>
+						{% empty %}
+							<div class="service_box">
+								<h4 class="box_title">No Taab Found. Please Wait!</h4>
 							</div>
-						</div>
-						<div class="info_tabs_content" id="tab3">
-							<div class="info_slider">
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider3.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Klient soovib asendada krundil asuva 40 m pikkuse õhuliini maakaabliga. Hind kokku: 4500 €. Hinnale lisandub projektijuhtimise tasu. Kliendil tuleb täiendavalt välja ehitada elektrisüsteem uuest kilbist majani (kaabel kilbist majja).</p>
-									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider2.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Elektrivõrgu ümberpaigutamine territooriumi vabastamiseks. Keskpinge 400 m pikkuse õhuliini asendamine maakaabliga kinnistu piires. Hind kokku: 20 300 eurot. Hinnale lisandub projektijuhtimise tasu.</p>
-									</div>
-								</div>
-								<div class="info_slider_item row">
-									<div class="col-12 col-lg-6 mb-3 mb-lg-0">
-										<img class="info_slider_img w-100" src="{% static 'main/images/info/slider1.jpg' %}" alt="SliderImage"/>
-									</div>
-									<div class="col-12 col-lg-6">
-										<p class="info_slider_text">Liitumispunkti asukoha muutus. Kilbi ja arvesti majast välja viimine õues oleva postile. hind kokku: 1070 €. Hinnale lisandub projektijuhtimise tasu. Lisaks pead täiendavalt välja ehitama uue kilbi ja maja vahelise ühenduse (kaabel kilbist majja).</p>
-									</div>
-								</div>
-							</div>
-						</div>
+						{% endfor %}
 					</div>
 				</div>
 				<div class="info_list row">

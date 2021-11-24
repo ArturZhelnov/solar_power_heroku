@@ -6,40 +6,26 @@
 			<div class="col-12 col-lg-6 step_content">
 				<h2 class="title mb-4 text-uppercase aos-init aos-animate" data-aos="fade-up">Tarbi targalt, tooda targalt</h2>
 				<div class="d-flex flex-column justify-content-between aos-init aos-animate" data-aos="fade-right" data-aos-delay="500">
-					<div class="mb-lg-4">
-						<span class="text-secondary">01</span>
-						<h4 class="fw-bold">Hangi tootmisseadmed</h4>
-						<p class="">Tootmisseade võib olla nii päikesepaneel, tuulik kui generaator.</p>
-					</div>
-					
-					<div class="mb-lg-4">
-						<span class="text-secondary">02</span>
-						<h4 class="fw-bold">Võrguleping</h4>
-						<p class="">Sõlmi võrguleping ja väiketootja liitumisleping.</p>
-					</div>
-					
-					<div class="mb-lg-4">
-						<span class="text-secondary">03</span>
-						<h4 class="fw-bold">Paigaldus</h4>
-						<p class="">Paigaldame ja seadistame seadmed, et mõõta tarbitud ja võrku tagasi antud energiakoguseid.</p>
-					</div>
-					
-					<div class="mb-lg-4">
-						<span class="text-secondary">04</span>
-						<h4 class="fw-bold">Väiketootja energialeping</h4>
-						<p class="">Kui soovid üleliigset elektrienergiat võrku tagasi müüa, sõlmime sinuga ka väiketootja energialepingu.</p>
-					</div>
-					
-					<div class="">
-						<span class="text-secondary">05</span>
-						<h4 class="fw-bold">Hakka tootma</h4>
-						<p class="">Energialepingut saab sõlmida vaid selle energiamüüjaga, kelle käest sa enda tarbeks elektrit ostad.</p>
-					</div>
+					{% for step in steps %}
+						<div class="mb-lg-4">
+							<span class="text-secondary">0{{ step.id }}</span>
+							<h4 class="fw-bold">{{ step.heading }}</h4>
+							<p class="">{{ step.text }}</p>
+						</div>
+					{% empty %}
+						<div class="service_box">
+							<h4 class="box_title">No Steps Found. Please Wait!</h4>
+						</div>
+					{% endfor %}
 				</div>
 			</div>
 			
 			<div class="col-12 col-lg-6 text-center step_content_img aos-init aos-animate" data-aos="fade-left" data-aos-delay="500">
-				<img class="img-fluid step_img h-100" src="{% static 'main/images/steps/step.jpg' %}" alt="StepsImage"/>
+				{% for si in steps_imgs %}
+					<img class="img-fluid step_img h-100" src="{{ si.service_img.url }}" alt="{{ si.name }}"/>
+				{% empty %}
+					<img class="img-fluid step_img h-100" src="https://farm9.staticflickr.com/8242/8558295633_f34a55c1c6_b.jpg" alt="StepsImage"/>
+				{% endfor %}
 			</div>
 		</div>
 	</div>

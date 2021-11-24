@@ -18,10 +18,11 @@
 			<span class="batn_text fw-bold">võtke ühendust</span>
 		</a>
 		<ul class="header_social mb-2 nav justify-content-center">
-			<li class="social_item nav-item"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/instagram.svg' %}" alt="Social"/></a></li>
-			<li class="social_item nav-item"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/twitter.svg' %}" alt="telegram"/></a></li>
-			<li class="social_item nav-item"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/linkedin.svg' %}" alt="whatsapp"/></a></li>
-			<li class="social_item nav-item"><a class="social_link nav-link" href="https://www.google.com/" target="_blank"><img class="" src="{% static 'main/images/social/facebook.svg' %}" alt="Social"/></a></li>
+			{% for sl in social_profiles %}
+				<li class="social_item nav-item"><a class="social_link nav-link" href="{{ sl.link }}" target="_blank"><img class="" src="{{ sl.soc_img.url }}" alt="{{ sl.soc_name }}"/></a></li>
+			{% empty %}
+				<li class="social_item nav-item">No Contacts Found. Please Wait!</li>
+			{% endfor %}
 		</ul>
 	</div>
 </header>

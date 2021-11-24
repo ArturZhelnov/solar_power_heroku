@@ -1,75 +1,24 @@
 {% load static %}
 <!-- PARTNERS START -->		
 <section class="partners py-5 bg-light" id="partners">
-	<div class="container mt-3">
-		
+	<div class="container mt-3 mb-4">
 		<div class="row mb-3">
 			<div class="col-12 mb-3">
 				<h2 class="title mb-4 text-uppercase aos-init aos-animate" data-aos="fade-up">Koostööpartnerid</h2>
 			</div>
 		</div>
 		<div class="row sponsors">
+			{% for partner in partners %}
 			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/amazon1.png' %}" alt="Partners"/>
+				<a class="partner_link d-inline-block" href="{{ partner.link }}" target="_blank">
+					<img class="partner_link_img w-100" src="{{ partner.img.url }}" alt="{{ partner.name }}"/>
 				</a>
 			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/partner1a.jpg' %}" alt="Partners"/>
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/partner2.jpg' %}" alt="Partners"/>
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/partner1a.jpg' %}" alt="Partners"/>
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/partner3.jpg' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/paypal1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/amazon1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/skype1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/paypal1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2 mb-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/yandex1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/paypal1.png' %}" alt="Partners" />
-				</a>
-			</div>
-			<div class="sponsor col-6 col-sm-4 col-md-3 col-lg-2">
-				<a class="partner_link d-inline-block" href="https://www.google.com/" target="_blank">
-					<img class="partner_link_img w-100" src="{% static 'main/images/partners/amazon1.png' %}" alt="Partners" />
-				</a>
-			</div>
+			{% empty %}
+				<div class="service_box">
+					<h4 class="box_title">No Partners Found. Please Be The First One!</h4>
+				</div>
+			{% endfor %}
 		</div>
 	</div>
 </section>

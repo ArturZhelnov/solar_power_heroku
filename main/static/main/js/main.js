@@ -1,5 +1,10 @@
 $(function(){
 	
+	$('.info_tabs_item:first').addClass('active');
+	$('.info_tabs_content:first').addClass('active');
+	//$("#resultsBox ul li").first().addClass( "aaaa" );
+	//$('#resultsBox li:first').addClass('aaaa');
+	
 	/*INFO SLIDER*/
 	$('.info_slider').slick({
 		autoplay: true,
@@ -8,6 +13,7 @@ $(function(){
 		prevArrow: '<svg class="slick_left" width="50" height="30" fill="#303030" version="1.1" id="Layer_1a" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 476.213 476.213" style="enable-background:new 0 0 476.213 476.213;" xml:space="preserve"><polygon points="476.213,223.107 76.212,223.107 76.212,161.893 0,238.108 76.212,314.32 76.212,253.107 476.213,253.107"/></svg>',
 		nextArrow: '<svg class="slick_right" width="50" height="30" fill="#303030" version="1.1" id="Layer_1b" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 476.213 476.213" style="enable-background:new 0 0 476.213 476.213;" xml:space="preserve"><polygon points="476.213,238.105 400,161.893 400,223.106 0,223.106 0,253.106 400,253.106 400,314.32"/></svg>',
 	});
+	
 	
 	/* INFO TABS */
 	$('.info_tabs_item').on('click', function(e){
