@@ -12,8 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 #import os
-import django-heroku
-django_heroku.settings(locals())
+import django_heroku
+#django_heroku.settings(locals())#bottom
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -46,8 +46,8 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     #'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -90,8 +90,8 @@ WSGI_APPLICATION = 'solar_power.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        #'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'd6k149oi7vn1hc',
         'USER': 'hkyyvyzxczeoug',
         'PASSWORD': 'a19ff74718bed5b390bbf451a0c9adeec31652c9c586fe0679cf15650a70dd96',
@@ -159,3 +159,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'#without cache
+
+django_heroku.settings(locals())
